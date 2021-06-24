@@ -1,1 +1,19 @@
-.CalculatorPage {}
+.CalculatorPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 500px; */
+}
+
+.Calculator {
+
+}
+
+
+.KeyRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end
+    /* background-color: aquamarine; */
+
+}
