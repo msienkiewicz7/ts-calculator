@@ -1,6 +1,7 @@
 import React, { MouseEvent, useState } from 'react';
 import CalcButton from '../../components/CalcButton/CalcButton';
 import CalcInput from '../../components/CalcInput/CalcInput';
+import { validInput } from '../../utils/Validator/validator';
 import styles from './CalculatorPage.module.css';
 
 
@@ -11,7 +12,9 @@ const CalculatorPage = () => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputKeyClick = (e: MouseEvent<HTMLButtonElement>) => {
-    setInputValue(inputValue.concat(e.currentTarget.value))
+    if(validInput(inputValue, e.currentTarget.value)) {
+      setInputValue(inputValue.concat(e.currentTarget.value))
+    }
   }
 
   return (
