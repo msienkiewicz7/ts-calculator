@@ -21,25 +21,9 @@ export const operations = {
         calculate: function (a: number, b: number): number {
             return a + b
         }
-    } as Operation,
-    '': {
-        key: '',
-        prio: 0,
-        calculate: function (a: number, b: number): number {
-            return a
-        }
     } as Operation
 }
 
-export function getOperandByKey(key: string) : Operation {
-    switch (key) {
-        case '+':
-            return operations["+"]
-    
-        default:
-            return operations[""]
-    }
-}
 
 
 
@@ -48,9 +32,22 @@ export class Token {
     value: number
     constructor(s: string) {   
         const operandKey = s[0]
-        const operand: Operation = getOperandByKey(operandKey)
+        let operand = operations["+"];
+        let value = 0;
+        if(operandKey === '*') {
+            //TODO
+        } else if (operandKey === '/') {
+            //TODO
+        } else {
+            value = Number(s)
+        }
         this.operand = operand;
-        this.value = operand.key === '' ?  Number(s) : Number(s.substring(1));
+        this.value = value;
+
+    }
+    static evaluateTokens(a: Token, b: Token) : Token {
+        const newValue = b.operand.calculate(a.value, b.value)
+        return new Token(`${(newValue < 0 ? "" : "+") + newValue}`)
     }
 }
 
