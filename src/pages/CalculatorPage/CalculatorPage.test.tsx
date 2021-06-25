@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import CalculatorPage from './CalculatorPage';
 
@@ -33,3 +33,17 @@ describe('<CalculatorPage />', () => {
 
 
 });
+
+describe('user input interaction', () => {
+  test('it displays users input keys', async () => {
+    render(<CalculatorPage />);
+    const two = screen.getByText('2');
+    const plus = screen.getByText('+');
+    fireEvent.click(two);
+    fireEvent.click(plus);
+    fireEvent.click(two);
+
+    const input = (await screen.findByTestId('CalcInput')).firstChild as HTMLInputElement
+    expect(input.value).toBe("2+2");
+  })
+})
