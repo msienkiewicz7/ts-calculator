@@ -30,12 +30,12 @@ const CalculatorPage = () => {
       <div className={styles.Calculator}>
 
         <CalcInput value={inputValue} />
-        
+
         <div className={styles.Keys}>
 
           <div className={styles.InputKeys}>
-            {inputKeys.map(rowKeys => (
-              <div className={styles.KeyRow} role="row">
+            {inputKeys.map((rowKeys, rowId) => (
+              <div className={styles.KeyRow} role="row" key={rowId}>
                 {
                   rowKeys.map(key => (
                     <CalcButton key={key} inputKey={key} onClick={handleInputKeyClick} />
