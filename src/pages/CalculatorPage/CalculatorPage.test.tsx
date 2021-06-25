@@ -19,4 +19,10 @@ describe('<CalculatorPage />', () => {
       expect(screen.getByText(key)).toBeInTheDocument()
     })
   });
+
+  test('it shows 4 key rows', () => {
+    render(<CalculatorPage />);
+    const rows = screen.getAllByRole('KeyRow');
+    expect(rows).toHaveLength(4)
+  })
 });
