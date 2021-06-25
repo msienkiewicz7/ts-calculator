@@ -11,4 +11,12 @@ describe('<CalculatorPage />', () => {
 
     expect(calculatorPage).toBeInTheDocument();
   });
+
+  test('it shows calculator input keys', () => {
+    render(<CalculatorPage />);
+    const inputKeys = ['7','8','9','4','5','6','1','2','3','0',',']
+    inputKeys.forEach(key => {
+      expect(screen.getByText(key)).toBeInTheDocument()
+    })
+  });
 });
