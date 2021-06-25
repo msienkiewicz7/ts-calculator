@@ -23,6 +23,27 @@ describe("ExpressionEvaluation", () => {
 });
 
 describe("token validation", () => {
+    it("creates valid token from string (positive)", () => {
+        const stringToken = "+2"
+        const token = new Token(stringToken)
+        expect(token).toHaveProperty('operand', operations["+"])
+        expect(token).toHaveProperty('value', 2)
+    });
+
+    it("creates valid token from string (negative)", () => {
+        const stringToken = "-2"
+        const token = new Token(stringToken)
+        expect(token).toHaveProperty('operand', operations["+"])
+        expect(token).toHaveProperty('value', -2)
+    });
+
+    it("creates valid token from string (multiplication)", () => {
+        const stringToken = "*2"
+        const token = new Token(stringToken)
+        expect(token).toHaveProperty('operand', operations["*"])
+        expect(token).toHaveProperty('value', 2)
+    });
+
     it("creates valid token from string without operation character", () => {
         const stringToken = "2"
         const token = new Token(stringToken)
@@ -30,32 +51,7 @@ describe("token validation", () => {
         expect(token).toHaveProperty('value', 2)
     });
 
-    it("evaluates two tokens (positive result)", () => {
-        const a = new Token('-2')
-        const b = new Token('+3')
-        const result = Token.evaluateTokens(a, b)
 
-        expect(result).toHaveProperty('operand', operations["+"])
-        expect(result).toHaveProperty('value', 1)
-    });
-
-    it("evaluates two tokens (negative result)", () => {
-        const a = new Token('-2')
-        const b = new Token('-3')
-        const result = Token.evaluateTokens(a, b)
-
-        expect(result).toHaveProperty('operand', operations["+"])
-        expect(result).toHaveProperty('value', -5)
-    });
-
-    it("evaluates one positive and one negative token", () => {
-        const a = new Token('2')
-        const b = new Token('-3')
-        const result = Token.evaluateTokens(a, b)
-
-        expect(result).toHaveProperty('operand', operations["+"])
-        expect(result).toHaveProperty('value', -1)
-    })
 })
 
 describe("token addition and substraction", () => {
@@ -102,7 +98,7 @@ describe("token multiplication", () => {
         const b = new Token('*3')
         const result = Token.evaluateTokens(a, b)
 
-        expect(result).toHaveProperty('operand', operations["*"])
+        expect(result).toHaveProperty('operand', operations["+"])
         expect(result).toHaveProperty('value', 6)
     });
     // TODO: 
