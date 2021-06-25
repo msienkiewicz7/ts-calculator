@@ -1,6 +1,17 @@
 
 export function evaluate(expression: string) : string {
-    //TODO: implement evaluation
+    const expressionParts = splitExpressionByLogic(expression)
+    const tokens = expressionParts.map(token => new Token(token))
+    console.log(tokens)
+    while (tokens.length > 1) {
+        //find index of highest prio operand
+        const prioList = tokens.map(t => t.operand.prio)
+        const i = prioList.indexOf(Math.max(...prioList));        
+        // evaluate prev and highest token
+        const newToken = Token.evaluateTokens(tokens[i-1], tokens[i])
+        tokens.splice(i-1, 2, newToken)
+    }
+    console.log(tokens)
     return ''
 }
 
