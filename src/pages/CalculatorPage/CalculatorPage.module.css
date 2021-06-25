@@ -6,7 +6,16 @@
 }
 
 .Calculator {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+}
+
+.Keys {
+    display: flex;
+}
+
+.InputKeys {
+    /* display: flex; */
+    background-color: blue;
 }
 
 
@@ -16,4 +25,8 @@
     justify-content: flex-end;
     /* background-color: aquamarine; */
 
+}
+
+.OperationKeys {
+    background-color: blueviolet;
 }
