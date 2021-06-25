@@ -14,14 +14,14 @@ const CalculatorPage = () => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputKeyClick = (e: MouseEvent<HTMLButtonElement>) => {
-    if(validInput(inputValue, e.currentTarget.value)) {
+    if (validInput(inputValue, e.currentTarget.value)) {
       setInputValue(inputValue.concat(e.currentTarget.value))
     }
   }
 
   const handleOparationKeyClick = (e: MouseEvent<HTMLButtonElement>) => {
     // if(validInput(inputValue, e.currentTarget.value)) {
-      setInputValue(inputValue.concat(e.currentTarget.value))
+    setInputValue(inputValue.concat(e.currentTarget.value))
     // }
   }
 
@@ -29,21 +29,28 @@ const CalculatorPage = () => {
     <div className={styles.CalculatorPage} data-testid="CalculatorPage">
       <div className={styles.Calculator}>
 
-        <CalcInput value={inputValue}/>
+        <CalcInput value={inputValue} />
+        
+        <div className={styles.Keys}>
 
-        <div className={styles.InputKeys}>
-          {inputKeys.map(rowKeys => (
-            <div className={styles.KeyRow} role="row">
-              {
-                rowKeys.map(key => (
-                  <CalcButton key={key} inputKey={key} onClick={handleInputKeyClick}/>
-                ))
-              }
-            </div>
-          ))}
-          {operationKeys.map(operationKey => (
-            <CalcButton key={operationKey} inputKey={operationKey} onClick={handleOparationKeyClick}/>
-          ))}
+          <div className={styles.InputKeys}>
+            {inputKeys.map(rowKeys => (
+              <div className={styles.KeyRow} role="row">
+                {
+                  rowKeys.map(key => (
+                    <CalcButton key={key} inputKey={key} onClick={handleInputKeyClick} />
+                  ))
+                }
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.OperationKeys}>
+            {operationKeys.map(operationKey => (
+              <CalcButton key={operationKey} inputKey={operationKey} onClick={handleOparationKeyClick} />
+            ))}
+          </div>
+
         </div>
 
       </div>
