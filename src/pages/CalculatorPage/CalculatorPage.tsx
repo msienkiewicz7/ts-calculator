@@ -7,6 +7,7 @@ import styles from './CalculatorPage.module.css';
 
 const inputKeys = [['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['0', ',']]
 const operationKeys = ['/', '*', '-', '+']
+const evaluationKeys = ['C', '=']
 
 
 const CalculatorPage = () => {
@@ -31,6 +32,14 @@ const CalculatorPage = () => {
 
         <CalcInput value={inputValue} />
 
+        <div className={styles.EvaluationKeys}>
+            {
+              evaluationKeys.map(evaluationKey => (
+                <CalcButton key={evaluationKey} inputKey={evaluationKey} onClick={handleOparationKeyClick} />
+              ))
+            }
+          </div>
+
         <div className={styles.Keys}>
 
           <div className={styles.InputKeys}>
@@ -46,9 +55,11 @@ const CalculatorPage = () => {
           </div>
 
           <div className={styles.OperationKeys}>
-            {operationKeys.map(operationKey => (
-              <CalcButton key={operationKey} inputKey={operationKey} onClick={handleOparationKeyClick} />
-            ))}
+            {
+              operationKeys.map(operationKey => (
+                <CalcButton key={operationKey} inputKey={operationKey} onClick={handleOparationKeyClick} />
+              ))
+            }
           </div>
 
         </div>

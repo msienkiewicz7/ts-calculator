@@ -30,3 +30,8 @@
 .OperationKeys {
     background-color: blueviolet;
 }
+
+.EvaluationKeys {
+    display: flex;
+    justify-content: space-between;
+}
