@@ -11,4 +11,10 @@ describe('<CalcInput />', () => {
 
     expect(calcInput).toBeInTheDocument();
   });
+
+  test('it should contain only one HTML element', () => {
+    render(<CalcInput />);
+    const calcInput = screen.getByTestId('CalcInput');
+    expect(calcInput.childNodes).toHaveLength(1)
+  })
 });
