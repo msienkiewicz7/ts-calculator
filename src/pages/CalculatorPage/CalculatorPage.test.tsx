@@ -20,9 +20,19 @@ describe('<CalculatorPage />', () => {
     })
   });
 
-  test('it shows 4 key rows', () => {
+  test('it shows 4 input key rows', () => {
     render(<CalculatorPage />);
     const rows = screen.getAllByRole('row');
     expect(rows).toHaveLength(4)
-  })
+  });
+
+  test('it shows calculator operation keys', () => {
+    render(<CalculatorPage />);
+    const operationKeys = ['/', '*', '-', '+']
+    operationKeys.forEach(key => {
+      expect(screen.getByText(key)).toBeInTheDocument()
+    })
+  });
+
+
 });
