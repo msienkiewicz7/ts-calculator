@@ -21,7 +21,15 @@ export const operations = {
         calculate: function (a: number, b: number): number {
             return a + b
         }
-    } as Operation
+    } as Operation,
+    '*': {
+        key: '*',
+        prio: 2,
+        calculate: function (a: number, b: number): number {
+            return a * b
+        }
+    } as Operation,
+
 }
 
 
@@ -35,7 +43,8 @@ export class Token {
         let operand = operations["+"];
         let value = 0;
         if(operandKey === '*') {
-            //TODO
+            operand = operations["*"]
+            value = Number(s.substring(1))
         } else if (operandKey === '/') {
             //TODO
         } else {
