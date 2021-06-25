@@ -12,9 +12,13 @@ describe('<CalculatorPage />', () => {
     expect(calculatorPage).toBeInTheDocument();
   });
 
-  test('it shows calculator input keys', () => {
+  test('it shows calculator keys', () => {
     render(<CalculatorPage />);
-    const inputKeys = ['7','8','9','4','5','6','1','2','3','0',',']
+    const inputKeys = [
+      '7','8','9','4','5','6','1','2','3','0',',', // input keys
+      '/', '*', '-', '+', // operation keys
+      'C', '='  // evaluation keys
+    ]
     inputKeys.forEach(key => {
       expect(screen.getByText(key)).toBeInTheDocument()
     })
@@ -26,13 +30,6 @@ describe('<CalculatorPage />', () => {
     expect(rows).toHaveLength(4)
   });
 
-  test('it shows calculator operation keys', () => {
-    render(<CalculatorPage />);
-    const operationKeys = ['/', '*', '-', '+']
-    operationKeys.forEach(key => {
-      expect(screen.getByText(key)).toBeInTheDocument()
-    })
-  });
 
 
 });
