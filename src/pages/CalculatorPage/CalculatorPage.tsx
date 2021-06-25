@@ -1,14 +1,14 @@
 import React, { MouseEvent, useState } from 'react';
 import CalcButton from '../../components/CalcButton/CalcButton';
 import CalcInput from '../../components/CalcInput/CalcInput';
+import { evaluate } from '../../utils/ExpressionEvaluator/evaluator';
+import { ExpressionEvaluator } from '../../utils/ExpressionEvaluator/oldEval';
 import { validInput } from '../../utils/Validator/validator';
 import styles from './CalculatorPage.module.css';
 
 
 const inputKeys = [['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['0', ',']]
 const operationKeys = ['/', '*', '-', '+']
-const evaluationKeys = ['C', '=']
-
 
 const CalculatorPage = () => {
 
@@ -21,9 +21,12 @@ const CalculatorPage = () => {
   }
 
   const handleOparationKeyClick = (e: MouseEvent<HTMLButtonElement>) => {
-    // if(validInput(inputValue, e.currentTarget.value)) {
     setInputValue(inputValue.concat(e.currentTarget.value))
-    // }
+  }
+
+  const handleEquationKeyClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const result = evaluate(inputValue)
+    setInputValue(String(result))
   }
 
   return (
@@ -33,11 +36,8 @@ const CalculatorPage = () => {
         <CalcInput value={inputValue} />
 
         <div className={styles.EvaluationKeys}>
-            {
-              evaluationKeys.map(evaluationKey => (
-                <CalcButton key={evaluationKey} inputKey={evaluationKey} onClick={handleOparationKeyClick} />
-              ))
-            }
+            <CalcButton key={'C'} inputKey={'C'} onClick={handleInputKeyClick} />
+            <CalcButton key={'='} inputKey={'='} onClick={handleEquationKeyClick} />
           </div>
 
         <div className={styles.Keys}>
