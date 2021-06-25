@@ -15,6 +15,13 @@ describe("ExpressionEvaluation", () => {
         expect(token).toHaveProperty('value', 2)
     });
 
+    it("creates valid token from string without operation character", () => {
+        const stringToken = "2"
+        const token = new Token(stringToken)
+        expect(token).toHaveProperty('operand', operations[""])
+        expect(token).toHaveProperty('value', 2)
+    });
+
     it("evaluates two tokens", () => {
         const a = new Token('2')
         const b = new Token('+3')
