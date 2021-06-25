@@ -96,4 +96,42 @@ describe("token addition and substraction", () => {
     })
 })
 
+describe("token multiplication", () => {
+    it("evaluates two tokens (positive and positive)", () => {
+        const a = new Token('+2')
+        const b = new Token('+3')
+        const result = Token.evaluateTokens(a, b)
+
+        expect(result).toHaveProperty('operand', operations["*"])
+        expect(result).toHaveProperty('value', 5)
+    });
+
+    it("evaluates two tokens (positive and negative)", () => {
+        const a = new Token('+2')
+        const b = new Token('-3')
+        const result = Token.evaluateTokens(a, b)
+
+        expect(result).toHaveProperty('operand', operations["*"])
+        expect(result).toHaveProperty('value', -1)
+    });
+
+    it("evaluates two tokens (negative and positive)", () => {
+        const a = new Token('-2')
+        const b = new Token('+3')
+        const result = Token.evaluateTokens(a, b)
+
+        expect(result).toHaveProperty('operand', operations["*"])
+        expect(result).toHaveProperty('value', 1)
+    })
+
+    it("evaluates two tokens (negative and negative)", () => {
+        const a = new Token('-2')
+        const b = new Token('-3')
+        const result = Token.evaluateTokens(a, b)
+
+        expect(result).toHaveProperty('operand', operations["*"])
+        expect(result).toHaveProperty('value', -5)
+    })
+})
+
 
