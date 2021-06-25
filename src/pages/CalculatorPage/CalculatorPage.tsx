@@ -2,7 +2,6 @@ import React, { MouseEvent, useState } from 'react';
 import CalcButton from '../../components/CalcButton/CalcButton';
 import CalcInput from '../../components/CalcInput/CalcInput';
 import { evaluate } from '../../utils/ExpressionEvaluator/evaluator';
-import { ExpressionEvaluator } from '../../utils/ExpressionEvaluator/oldEval';
 import { validInput } from '../../utils/Validator/validator';
 import styles from './CalculatorPage.module.css';
 
