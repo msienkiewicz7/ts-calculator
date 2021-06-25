@@ -25,7 +25,7 @@ const CalculatorPage = () => {
 
         <div className={styles.InputKeys}>
           {inputKeys.map(rowKeys => (
-            <div className={styles.KeyRow} role="KeyRow">
+            <div className={styles.KeyRow} role="row">
               {
                 rowKeys.map(key => (
                   <CalcButton key={key} inputKey={key} onClick={handleInputKeyClick}/>

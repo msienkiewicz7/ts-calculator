@@ -22,7 +22,7 @@ describe('<CalculatorPage />', () => {
 
   test('it shows 4 key rows', () => {
     render(<CalculatorPage />);
-    const rows = screen.getAllByRole('KeyRow');
+    const rows = screen.getAllByRole('row');
     expect(rows).toHaveLength(4)
   })
 });
