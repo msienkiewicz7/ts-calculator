@@ -46,5 +46,24 @@ describe('user input interaction', () => {
 
     const input = (await screen.findByTestId('CalcInput')).firstChild as HTMLInputElement
     expect(input.value).toBe("2+2");
+  });
+
+  test('it evaluates users input correctly', async () => {
+    render(<CalculatorPage />);
+    // input keys
+    const two = screen.getByText('2');
+    const plus = screen.getByText('+');
+    // evaluation key
+    const equal = screen.getByText('=')
+    // fire click events
+    fireEvent.click(two);
+    fireEvent.click(plus);
+    fireEvent.click(two);
+    fireEvent.click(equal)
+
+    const input = (await screen.findByTestId('CalcInput')).firstChild as HTMLInputElement
+    expect(input.value).toBe("4");
   })
+
+
 })
