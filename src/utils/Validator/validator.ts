@@ -1,10 +1,16 @@
 export function validInput(currentInput: string, nextKey: string) : boolean {
+    const lastKey = currentInput.slice(-1)
 
-    //TODO: following zeroes (eg. 00)
+    //TODO: leading zeroes (eg. 00)
 
-    //TODO: following operands (e.g. 1+-)
+    //TODO: trailing operands or decimal points (e.g. 1+- or 1,,)
+    if(!Number(lastKey) && !Number(nextKey)) {
+        return false
+    }
 
-    //TODO: following decimal points (e.g. 1,,)
+    
+
+    //TODO: multiple decimal points (e.g. 1,0,)
 
     return true
 }
