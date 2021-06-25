@@ -50,7 +50,7 @@ export class Token {
         const operandKey = s[0]
         const operand: Operation = getOperandByKey(operandKey)
         this.operand = operand;
-        this.value = operand.key === '' ? Number(s.substring(1)) : Number(s);
+        this.value = operand.key === '' ?  Number(s) : Number(s.substring(1));
     }
 }
 
