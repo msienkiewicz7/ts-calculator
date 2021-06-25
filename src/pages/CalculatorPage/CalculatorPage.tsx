@@ -6,6 +6,8 @@ import styles from './CalculatorPage.module.css';
 
 
 const inputKeys = [['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['0', ',']]
+const operationKeys = ['/', '*', '-', '+']
+
 
 const CalculatorPage = () => {
 
@@ -15,6 +17,12 @@ const CalculatorPage = () => {
     if(validInput(inputValue, e.currentTarget.value)) {
       setInputValue(inputValue.concat(e.currentTarget.value))
     }
+  }
+
+  const handleOparationKeyClick = (e: MouseEvent<HTMLButtonElement>) => {
+    // if(validInput(inputValue, e.currentTarget.value)) {
+      setInputValue(inputValue.concat(e.currentTarget.value))
+    // }
   }
 
   return (
@@ -32,7 +40,9 @@ const CalculatorPage = () => {
                 ))
               }
             </div>
-
+          ))}
+          {operationKeys.map(operationKey => (
+            <CalcButton key={operationKey} inputKey={operationKey} onClick={handleOparationKeyClick}/>
           ))}
         </div>
 
