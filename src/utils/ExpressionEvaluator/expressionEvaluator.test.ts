@@ -30,7 +30,7 @@ describe("token validation", () => {
         expect(token).toHaveProperty('value', 2)
     });
 
-    it("evaluates two regular tokens (positive result)", () => {
+    it("evaluates two tokens (positive result)", () => {
         const a = new Token('-2')
         const b = new Token('+3')
         const result = Token.evaluateTokens(a, b)
@@ -39,7 +39,7 @@ describe("token validation", () => {
         expect(result).toHaveProperty('value', 1)
     });
 
-    it("evaluates two regular tokens (negative result)", () => {
+    it("evaluates two tokens (negative result)", () => {
         const a = new Token('-2')
         const b = new Token('-3')
         const result = Token.evaluateTokens(a, b)
@@ -48,12 +48,12 @@ describe("token validation", () => {
         expect(result).toHaveProperty('value', -5)
     });
 
-    it("evaluates one irregular and one regular token", () => {
+    it("evaluates one positive and one negative token", () => {
         const a = new Token('2')
-        const b = new Token('+3')
+        const b = new Token('-3')
         const result = Token.evaluateTokens(a, b)
 
         expect(result).toHaveProperty('operand', operations["+"])
-        expect(result).toHaveProperty('value', 5)
+        expect(result).toHaveProperty('value', -1)
     })
 })
