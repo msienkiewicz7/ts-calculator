@@ -15,5 +15,14 @@ describe("ExpressionEvaluation", () => {
         expect(token).toHaveProperty('value', 2)
     });
 
-    
+    it("evaluates two tokens", () => {
+        const a = new Token('2')
+        const b = new Token('+3')
+        const result = Token.evaluateTokens(a, b)
+
+        expect(result).toHaveProperty('operand', operations[""])
+        expect(result).toHaveProperty('value', 5)
+    })
+
+
 });
