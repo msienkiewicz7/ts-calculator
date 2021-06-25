@@ -39,6 +39,7 @@ describe('user input interaction', () => {
     render(<CalculatorPage />);
     const two = screen.getByText('2');
     const plus = screen.getByText('+');
+    // fire click events
     fireEvent.click(two);
     fireEvent.click(plus);
     fireEvent.click(two);
